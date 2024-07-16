@@ -9,39 +9,17 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="Linux 上Nvidia驱动无法显示/Driver Not Loaded
-https://dev.to/simonpham/how-to-fix-ubuntu-nvidia-driver-is-not-loaded-2ipp
-怎样将 iPhone 备份保存到 Mac 的外部存储设备
-https://sspai.com/post/76016
-在Linux安装webtop远程桌面，环境docker容器
-https://www.bilibili.com/video/BV1LA4m1F7Jr
-在Linux中用docker安装android11，+guiscrcpy实现界面访问
-https://www.bilibili.com/video/BV1eL41147v9
-docker WebUI https://[portainer.io](https://portainer.io/)
-Android TV x86 https://www.bilibili.com/video/BV1iZ4y1X7sY
-OpenWrt软路由创建SSID
-[https://www.bilibili.com/video/BV1WZ421a7x8](url)
-使用GitHub账号搭建个人博客（在互联网中永生Gmeek）
-[https://www.bilibili.com/video/BV1GM4m1m7ZD](url)。">
-<meta property="og:title" content="手册/Handbook">
-<meta property="og:description" content="Linux 上Nvidia驱动无法显示/Driver Not Loaded
-https://dev.to/simonpham/how-to-fix-ubuntu-nvidia-driver-is-not-loaded-2ipp
-怎样将 iPhone 备份保存到 Mac 的外部存储设备
-https://sspai.com/post/76016
-在Linux安装webtop远程桌面，环境docker容器
-https://www.bilibili.com/video/BV1LA4m1F7Jr
-在Linux中用docker安装android11，+guiscrcpy实现界面访问
-https://www.bilibili.com/video/BV1eL41147v9
-docker WebUI https://[portainer.io](https://portainer.io/)
-Android TV x86 https://www.bilibili.com/video/BV1iZ4y1X7sY
-OpenWrt软路由创建SSID
-[https://www.bilibili.com/video/BV1WZ421a7x8](url)
-使用GitHub账号搭建个人博客（在互联网中永生Gmeek）
-[https://www.bilibili.com/video/BV1GM4m1m7ZD](url)。">
+<meta name="description" content="拿到开源项目，要在本地编译时，先把iOS/android文件夹重新清理使用命令：
+npx expo prebuild --clean
+。">
+<meta property="og:title" content="ReactNative 在Expo上的应用">
+<meta property="og:description" content="拿到开源项目，要在本地编译时，先把iOS/android文件夹重新清理使用命令：
+npx expo prebuild --clean
+。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://zac5451.github.io/post/shou-ce--Handbook.html">
+<meta property="og:url" content="https://zac5451.github.io/post/ReactNative%20-zai-Expo-shang-de-ying-yong.html">
 <meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
-<title>手册/Handbook</title>
+<title>ReactNative 在Expo上的应用</title>
 
 
 </head>
@@ -72,7 +50,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">手册/Handbook</h1>
+<h1 class="postTitle">ReactNative 在Expo上的应用</h1>
 <div class="title-right">
     <a href="https://zac5451.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -80,7 +58,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         </svg>
     </a>
     
-    <a href="https://github.com/Zac5451/zac5451.github.io/issues/1" target="_blank" class="btn btn-invisible circle" title="Issue">
+    <a href="https://github.com/Zac5451/zac5451.github.io/issues/6" target="_blank" class="btn btn-invisible circle" title="Issue">
         <svg class="octicon" width="16" height="16">
             <path id="pathIssue" fill-rule="evenodd"></path>
         </svg>
@@ -96,20 +74,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><p>Linux 上Nvidia驱动无法显示/Driver Not Loaded<br>
-<a href="https://dev.to/simonpham/how-to-fix-ubuntu-nvidia-driver-is-not-loaded-2ipp" rel="nofollow">https://dev.to/simonpham/how-to-fix-ubuntu-nvidia-driver-is-not-loaded-2ipp</a><br>
-怎样将 iPhone 备份保存到 Mac 的外部存储设备<br>
-<a href="https://sspai.com/post/76016" rel="nofollow">https://sspai.com/post/76016</a><br>
-在Linux安装webtop远程桌面，环境docker容器<br>
-<a href="https://www.bilibili.com/video/BV1LA4m1F7Jr" rel="nofollow">https://www.bilibili.com/video/BV1LA4m1F7Jr</a><br>
-在Linux中用docker安装android11，+guiscrcpy实现界面访问<br>
-<a href="https://www.bilibili.com/video/BV1eL41147v9" rel="nofollow">https://www.bilibili.com/video/BV1eL41147v9</a><br>
-docker WebUI https://<a href="https://portainer.io/" rel="nofollow">portainer.io</a><br>
-Android TV x86 <a href="https://www.bilibili.com/video/BV1iZ4y1X7sY" rel="nofollow">https://www.bilibili.com/video/BV1iZ4y1X7sY</a><br>
-OpenWrt软路由创建SSID<br>
-<a href="url">https://www.bilibili.com/video/BV1WZ421a7x8</a><br>
-使用GitHub账号搭建个人博客（在互联网中永生Gmeek）<br>
-<a href="url">https://www.bilibili.com/video/BV1GM4m1m7ZD</a></p></div>
+<div class="markdown-body" id="postBody"><p>拿到开源项目，要在本地编译时，先把iOS/android文件夹重新清理使用命令：<br>
+npx expo prebuild --clean</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

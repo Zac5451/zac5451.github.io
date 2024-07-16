@@ -9,40 +9,14 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="Linux 上Nvidia驱动无法显示/Driver Not Loaded
-https://dev.to/simonpham/how-to-fix-ubuntu-nvidia-driver-is-not-loaded-2ipp
-怎样将 iPhone 备份保存到 Mac 的外部存储设备
-https://sspai.com/post/76016
-在Linux安装webtop远程桌面，环境docker容器
-https://www.bilibili.com/video/BV1LA4m1F7Jr
-在Linux中用docker安装android11，+guiscrcpy实现界面访问
-https://www.bilibili.com/video/BV1eL41147v9
-docker WebUI https://[portainer.io](https://portainer.io/)
-Android TV x86 https://www.bilibili.com/video/BV1iZ4y1X7sY
-OpenWrt软路由创建SSID
-[https://www.bilibili.com/video/BV1WZ421a7x8](url)
-使用GitHub账号搭建个人博客（在互联网中永生Gmeek）
-[https://www.bilibili.com/video/BV1GM4m1m7ZD](url)。">
-<meta property="og:title" content="手册/Handbook">
-<meta property="og:description" content="Linux 上Nvidia驱动无法显示/Driver Not Loaded
-https://dev.to/simonpham/how-to-fix-ubuntu-nvidia-driver-is-not-loaded-2ipp
-怎样将 iPhone 备份保存到 Mac 的外部存储设备
-https://sspai.com/post/76016
-在Linux安装webtop远程桌面，环境docker容器
-https://www.bilibili.com/video/BV1LA4m1F7Jr
-在Linux中用docker安装android11，+guiscrcpy实现界面访问
-https://www.bilibili.com/video/BV1eL41147v9
-docker WebUI https://[portainer.io](https://portainer.io/)
-Android TV x86 https://www.bilibili.com/video/BV1iZ4y1X7sY
-OpenWrt软路由创建SSID
-[https://www.bilibili.com/video/BV1WZ421a7x8](url)
-使用GitHub账号搭建个人博客（在互联网中永生Gmeek）
-[https://www.bilibili.com/video/BV1GM4m1m7ZD](url)。">
+<meta name="description" content="在使用 Expo 开发 iOS 应用时，`npx expo run:ios` 和 `eas build -p ios --profile development --local` 都是用来构建和运行 iOS 应用的工具命令，但它们的用途和工作方式有一些显著的区别。">
+<meta property="og:title" content="npx expo runios和eas build -p ios --profile development --local的区别">
+<meta property="og:description" content="在使用 Expo 开发 iOS 应用时，`npx expo run:ios` 和 `eas build -p ios --profile development --local` 都是用来构建和运行 iOS 应用的工具命令，但它们的用途和工作方式有一些显著的区别。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://zac5451.github.io/post/shou-ce--Handbook.html">
+<meta property="og:url" content="https://zac5451.github.io/post/npx%20expo%20runios-he-eas%20build%20-p%20ios%20--profile%20development%20--local-de-qu-bie.html">
 <meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
-<title>手册/Handbook</title>
-
+<title>npx expo runios和eas build -p ios --profile development --local的区别</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 </head>
 <style>
@@ -72,7 +46,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">手册/Handbook</h1>
+<h1 class="postTitle">npx expo runios和eas build -p ios --profile development --local的区别</h1>
 <div class="title-right">
     <a href="https://zac5451.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -80,7 +54,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         </svg>
     </a>
     
-    <a href="https://github.com/Zac5451/zac5451.github.io/issues/1" target="_blank" class="btn btn-invisible circle" title="Issue">
+    <a href="https://github.com/Zac5451/zac5451.github.io/issues/2" target="_blank" class="btn btn-invisible circle" title="Issue">
         <svg class="octicon" width="16" height="16">
             <path id="pathIssue" fill-rule="evenodd"></path>
         </svg>
@@ -96,20 +70,53 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><p>Linux 上Nvidia驱动无法显示/Driver Not Loaded<br>
-<a href="https://dev.to/simonpham/how-to-fix-ubuntu-nvidia-driver-is-not-loaded-2ipp" rel="nofollow">https://dev.to/simonpham/how-to-fix-ubuntu-nvidia-driver-is-not-loaded-2ipp</a><br>
-怎样将 iPhone 备份保存到 Mac 的外部存储设备<br>
-<a href="https://sspai.com/post/76016" rel="nofollow">https://sspai.com/post/76016</a><br>
-在Linux安装webtop远程桌面，环境docker容器<br>
-<a href="https://www.bilibili.com/video/BV1LA4m1F7Jr" rel="nofollow">https://www.bilibili.com/video/BV1LA4m1F7Jr</a><br>
-在Linux中用docker安装android11，+guiscrcpy实现界面访问<br>
-<a href="https://www.bilibili.com/video/BV1eL41147v9" rel="nofollow">https://www.bilibili.com/video/BV1eL41147v9</a><br>
-docker WebUI https://<a href="https://portainer.io/" rel="nofollow">portainer.io</a><br>
-Android TV x86 <a href="https://www.bilibili.com/video/BV1iZ4y1X7sY" rel="nofollow">https://www.bilibili.com/video/BV1iZ4y1X7sY</a><br>
-OpenWrt软路由创建SSID<br>
-<a href="url">https://www.bilibili.com/video/BV1WZ421a7x8</a><br>
-使用GitHub账号搭建个人博客（在互联网中永生Gmeek）<br>
-<a href="url">https://www.bilibili.com/video/BV1GM4m1m7ZD</a></p></div>
+<div class="markdown-body" id="postBody"><p>在使用 Expo 开发 iOS 应用时，<code class="notranslate">npx expo run:ios</code> 和 <code class="notranslate">eas build -p ios --profile development --local</code> 都是用来构建和运行 iOS 应用的工具命令，但它们的用途和工作方式有一些显著的区别。</p>
+<h3><code class="notranslate">npx expo run:ios</code></h3>
+<p><code class="notranslate">npx expo run:ios</code> 命令主要用于在开发过程中快速启动和运行 iOS 应用。它的特点和作用如下：</p>
+<ol>
+<li><strong>本地运行</strong>：该命令会在本地构建和运行你的 iOS 应用。它依赖于你的开发环境中安装的 Xcode 和 iOS 模拟器。</li>
+<li><strong>快速反馈</strong>：适合日常开发和调试，因为它能迅速地将代码改动反映在模拟器或设备上。</li>
+<li><strong>需要 Xcode</strong>：需要在开发机器上安装 Xcode 和正确配置的 iOS 开发环境（包括 Xcode 命令行工具）。</li>
+<li><strong>调试功能</strong>：集成了调试功能，可以方便地调试应用代码。</li>
+</ol>
+<p>示例命令：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">npx expo run:ios</pre></div>
+<h3><code class="notranslate">eas build -p ios --profile development --local</code></h3>
+<p><code class="notranslate">eas build -p ios --profile development --local</code> 命令是使用 Expo Application Services (EAS) 构建工具进行的本地构建。EAS 提供了一套强大的构建和发布服务。该命令的特点和作用如下：</p>
+<ol>
+<li><strong>本地构建</strong>：此命令会在本地机器上构建 iOS 应用，而不是使用 Expo 的云构建服务。</li>
+<li><strong>配置文件</strong>：使用 EAS 构建时，可以指定构建配置文件（profile）。这些配置文件定义了不同的构建设置，如开发、测试、生产等环境的不同构建选项。</li>
+<li><strong>需要 EAS CLI</strong>：需要安装并配置 EAS CLI 工具。</li>
+<li><strong>灵活性和配置</strong>：EAS 构建提供了更多的灵活性和配置选项，可以根据项目的需求自定义构建过程。</li>
+<li><strong>适用于更复杂的构建需求</strong>：例如自定义的原生代码、更复杂的构建管道等。</li>
+</ol>
+<p>示例命令：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">eas build -p ios --profile development --local</pre></div>
+<h3>区别总结</h3>
+<ul>
+<li>
+<p><strong>目的和使用场景</strong>：</p>
+<ul>
+<li><code class="notranslate">npx expo run:ios</code> 更适合日常开发和调试，快速启动和运行应用。</li>
+<li><code class="notranslate">eas build -p ios --profile development --local</code> 适合更复杂的构建需求和自定义构建配置，适合构建最终发布版本或者更复杂的开发场景。</li>
+</ul>
+</li>
+<li>
+<p><strong>构建和运行环境</strong>：</p>
+<ul>
+<li><code class="notranslate">npx expo run:ios</code> 依赖于本地的 Xcode 和 iOS 开发环境。</li>
+<li><code class="notranslate">eas build -p ios --profile development --local</code> 依赖于本地的 EAS CLI 工具和相应的构建配置文件。</li>
+</ul>
+</li>
+<li>
+<p><strong>配置和灵活性</strong>：</p>
+<ul>
+<li><code class="notranslate">npx expo run:ios</code> 主要关注快速启动和运行，没有太多的配置选项。</li>
+<li><code class="notranslate">eas build -p ios --profile development --local</code> 提供了丰富的配置选项，可以根据不同的环境和需求进行配置。</li>
+</ul>
+</li>
+</ul>
+<p>根据你的具体需求和开发阶段，可以选择适合的命令来构建和运行你的 iOS 应用。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

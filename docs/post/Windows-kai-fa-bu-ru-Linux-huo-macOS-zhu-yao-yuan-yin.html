@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="Windows作为开发环境在某些方面确实不如Linux或macOS，主要原因可以归结为以下几个方面：
+
+1. 工具链和包管理系统
+
+Linux
+● 包管理系统：Linux有成熟的包管理系统，如APT（Debian/Ubuntu）、Yum（CentOS/RHEL）等。">
+<meta property="og:title" content="Windows开发不如Linux或macOS主要原因">
+<meta property="og:description" content="Windows作为开发环境在某些方面确实不如Linux或macOS，主要原因可以归结为以下几个方面：
+
+1. 工具链和包管理系统
+
+Linux
+● 包管理系统：Linux有成熟的包管理系统，如APT（Debian/Ubuntu）、Yum（CentOS/RHEL）等。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://zac5451.github.io/post/Windows-kai-fa-bu-ru-Linux-huo-macOS-zhu-yao-yuan-yin.html">
+<meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
+<title>Windows开发不如Linux或macOS主要原因</title>
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">Windows开发不如Linux或macOS主要原因</h1>
+<div class="title-right">
+    <a href="https://zac5451.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Zac5451/zac5451.github.io/issues/11" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>Windows作为开发环境在某些方面确实不如Linux或macOS，主要原因可以归结为以下几个方面：</p>
+<ol>
+<li>工具链和包管理系统</li>
+</ol>
+<p>Linux<br>
+● 包管理系统：Linux有成熟的包管理系统，如APT（Debian/Ubuntu）、Yum（CentOS/RHEL）等。这些工具使得安装、更新和管理软件变得非常方便。<br>
+● 开发工具链：大多数开源项目和开发工具最早都是在Unix/Linux环境下开发和测试的，因此在这些系统上运行和调试通常更顺畅。</p>
+<p>macOS<br>
+● Homebrew：macOS有Homebrew，这个包管理系统在macOS上非常流行，类似于Linux的包管理系统，能方便地安装和管理开发工具。<br>
+● Unix基础：macOS基于Unix，拥有类似于Linux的开发环境，很多Linux上的工具都可以无缝使用。</p>
+<p>Windows<br>
+● 包管理系统：虽然Windows有了Chocolatey、Scoop等包管理工具，但它们的生态和成熟度不如Linux和macOS的包管理系统。<br>
+● 工具兼容性：许多开源工具和库在Windows上的兼容性和性能不如在Unix系操作系统上，这需要开发者花费更多时间进行配置和调试。</p>
+<ol start="2">
+<li>终端和Shell环境</li>
+</ol>
+<p>Linux和macOS<br>
+● 强大的Shell环境：Bash、Zsh等Shell环境在Linux和macOS上都很强大，支持丰富的脚本和命令工具，极大地提高了开发效率。<br>
+● 原生支持：这些操作系统原生支持强大的终端工具和脚本语言，无需额外配置。</p>
+<p>Windows<br>
+● 命令行工具：尽管Windows有了Windows Subsystem for Linux（WSL），提供了一个Linux兼容层，但它仍然不能完全替代原生的Linux环境。PowerShell虽然强大，但与Bash等工具的生态和使用习惯有所不同。<br>
+● 开发者体验：开发者在Windows上需要额外安装和配置许多工具才能达到Linux或macOS上开箱即用的体验。</p>
+<ol start="3">
+<li>文件系统和权限管理</li>
+</ol>
+<p>Linux和macOS<br>
+● 文件系统：这些系统的文件系统（如Ext4、APFS）支持Unix权限和符号链接，便于开发和部署复杂的应用程序。<br>
+● 权限管理：Unix风格的权限管理使得开发者可以更灵活地控制文件和目录的访问权限。</p>
+<p>Windows<br>
+● 文件系统：NTFS虽然功能强大，但在处理Unix权限和符号链接等方面不如Linux和macOS的文件系统直观和高效。<br>
+● 权限问题：Windows的权限管理机制复杂且不够直观，尤其是在涉及跨平台开发和部署时，常常需要额外处理权限问题。</p>
+<ol start="4">
+<li>开发生态和社区支持</li>
+</ol>
+<p>Linux和macOS<br>
+● 社区支持：大量开源项目和开发工具的主要用户群和社区支持集中在Linux和macOS，文档和帮助资源更加丰富。<br>
+● 默认开发环境：许多开发工具和环境默认在Linux或macOS上支持，配置和使用更加方便。</p>
+<p>Windows<br>
+● 兼容性问题：一些开发工具和库在Windows上可能需要额外的配置或不完全兼容，增加了开发和调试的难度。<br>
+● 社区和文档：虽然Windows的开发社区也很活跃，但在处理一些特定的开源项目时，相关文档和资源相对较少。</p>
+<ol start="5">
+<li>容器和虚拟化</li>
+</ol>
+<p>Linux和macOS<br>
+● Docker和容器支持：Docker在Linux上有着最好的支持和性能，macOS也通过Docker for Mac提供了相对好的体验。<br>
+● 虚拟化：Linux和macOS在虚拟化技术（如KVM、VirtualBox、Parallels）的支持上相对更好。</p>
+<p>Windows<br>
+● 容器支持：虽然Windows也支持Docker，但在性能和兼容性方面不如Linux，并且Windows的Docker容器和Linux容器有所不同。<br>
+● 虚拟化：虽然Windows有Hyper-V，但与Linux和macOS的虚拟化工具相比，在某些场景下配置和使用更加复杂。</p>
+<p>总结</p>
+<p>Windows作为开发环境的主要问题在于其工具链、终端环境、文件系统、社区支持和容器支持等方面不如Linux和macOS。这些差异导致开发者在Windows上需要花费更多时间进行配置和调试，影响了整体开发效率和体验。尽管Windows 11在一些方面有所改进，但在这些核心问题上，仍然与Linux和macOS存在差距。</p>
+<p>Windows早期确实采用了一些独特的策略来吸引开发者，这些策略对其后续开发环境的演变产生了深远影响。以下是Windows在早期采用的一些策略以及它们对现代Windows开发环境的影响：</p>
+<ol>
+<li>独特的编程语言和框架</li>
+</ol>
+<p>Windows API和Win32<br>
+● Win32 API：Windows操作系统提供了丰富的Win32 API，这是一套供开发者使用的底层接口，主要使用C和C++进行开发。虽然功能强大，但与Unix/Linux的系统调用和POSIX标准有很大差异，导致跨平台开发困难。</p>
+<p>MFC和COM<br>
+● MFC（Microsoft Foundation Classes）：MFC是一个用于Windows应用开发的类库，基于C++。虽然简化了一些常见任务，但增加了Windows开发的复杂性。<br>
+● COM（Component Object Model）：COM是一个用于组件化软件开发的框架，在Windows上广泛使用，但其复杂性和独特性让许多开发者望而却步。</p>
+<p>Visual Basic和.NET<br>
+● Visual Basic（VB）：VB语言及其开发环境极大地降低了Windows应用开发的门槛，吸引了大量开发者，但VB语言与Unix/Linux上的开发语言生态完全不同。<br>
+● .NET框架：.NET是微软为统一开发环境推出的框架，支持多种语言（如C#、VB.NET）。尽管功能强大，但主要针对Windows平台，导致跨平台开发受限。</p>
+<ol start="2">
+<li>开发工具和IDE</li>
+</ol>
+<p>Visual Studio<br>
+● Visual Studio：微软推出的集成开发环境（IDE），功能非常强大，深受Windows开发者欢迎。然而，这一工具高度集成Windows平台的特性，使得开发者在迁移到其他平台时面临巨大挑战。</p>
+<p>早期的开发者工具<br>
+● Borland Delphi和C++ Builder：这些工具也是早期Windows开发的主要力量，它们在Windows平台上拥有独特的优势和大量用户，但同样增加了开发者的依赖。</p>
+<ol start="3">
+<li>开发环境的封闭性和平台依赖</li>
+</ol>
+<p>专有技术和格式<br>
+● 专有技术：微软大量使用自有的专有技术（如ActiveX、DirectX），这些技术虽然在Windows平台上表现优异，但在其他平台上缺乏支持，限制了跨平台开发的能力。<br>
+● 文件格式和协议：使用特有的文件格式和通信协议，使得跨平台开发变得更加困难。</p>
+<ol start="4">
+<li>市场策略和开发者生态</li>
+</ol>
+<p>开发者拉拢策略<br>
+● 开发者激励：微软通过各种手段激励开发者为Windows平台开发应用，包括开发者大会、培训计划、免费或优惠的开发工具等。<br>
+● 市场垄断：通过市场策略和兼并（如收购大量软件公司），微软在早期成功地建立了庞大的Windows应用生态系统。</p>
+<p>对现代开发环境的影响</p>
+<p>这些早期策略和技术选择在一定程度上塑造了现代Windows开发环境，使其在以下方面有所不足：</p>
+<p>跨平台兼容性<br>
+● Windows早期大量使用专有技术和API，导致其开发环境在跨平台兼容性上存在较大差距。虽然微软近些年推出了.NET Core（现在的.NET 5+），支持跨平台开发，但与Linux和macOS的生态相比，Windows仍有许多独特之处需要处理。</p>
+<p>工具和生态<br>
+● Windows的开发工具和生态系统高度专有，虽然Visual Studio非常强大，但与Linux和macOS上开源的工具链相比，仍显得封闭。开发者在Windows上需要适应许多特定于Windows的开发工具和流程。</p>
+<p>社区和开源文化<br>
+● Windows早期的封闭策略导致其在开源文化和社区支持上相对较弱。虽然微软近年来积极拥抱开源社区（如开源了VS Code、参与开发Linux内核等），但在开发者心目中，Linux和macOS依然是更为开放和友好的开发环境。</p>
+<p>结论</p>
+<p>Windows早期通过使用自有技术和语言来吸引开发者，虽然成功建立了庞大的Windows应用生态系统，但也导致了现代Windows开发环境的一些限制。与Linux和macOS相比，Windows的开发环境在工具链、跨平台兼容性、社区支持等方面仍存在差距。这些历史遗留问题使得Windows作为开发环境在某些方面不如Linux或macOS。</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://zac5451.github.io"> Blog Title </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Zac5451/zac5451.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+</html>

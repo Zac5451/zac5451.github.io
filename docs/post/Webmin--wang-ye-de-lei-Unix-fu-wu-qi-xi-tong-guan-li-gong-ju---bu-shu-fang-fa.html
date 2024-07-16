@@ -9,39 +9,33 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="Linux 上Nvidia驱动无法显示/Driver Not Loaded
-https://dev.to/simonpham/how-to-fix-ubuntu-nvidia-driver-is-not-loaded-2ipp
-怎样将 iPhone 备份保存到 Mac 的外部存储设备
-https://sspai.com/post/76016
-在Linux安装webtop远程桌面，环境docker容器
-https://www.bilibili.com/video/BV1LA4m1F7Jr
-在Linux中用docker安装android11，+guiscrcpy实现界面访问
-https://www.bilibili.com/video/BV1eL41147v9
-docker WebUI https://[portainer.io](https://portainer.io/)
-Android TV x86 https://www.bilibili.com/video/BV1iZ4y1X7sY
-OpenWrt软路由创建SSID
-[https://www.bilibili.com/video/BV1WZ421a7x8](url)
-使用GitHub账号搭建个人博客（在互联网中永生Gmeek）
-[https://www.bilibili.com/video/BV1GM4m1m7ZD](url)。">
-<meta property="og:title" content="手册/Handbook">
-<meta property="og:description" content="Linux 上Nvidia驱动无法显示/Driver Not Loaded
-https://dev.to/simonpham/how-to-fix-ubuntu-nvidia-driver-is-not-loaded-2ipp
-怎样将 iPhone 备份保存到 Mac 的外部存储设备
-https://sspai.com/post/76016
-在Linux安装webtop远程桌面，环境docker容器
-https://www.bilibili.com/video/BV1LA4m1F7Jr
-在Linux中用docker安装android11，+guiscrcpy实现界面访问
-https://www.bilibili.com/video/BV1eL41147v9
-docker WebUI https://[portainer.io](https://portainer.io/)
-Android TV x86 https://www.bilibili.com/video/BV1iZ4y1X7sY
-OpenWrt软路由创建SSID
-[https://www.bilibili.com/video/BV1WZ421a7x8](url)
-使用GitHub账号搭建个人博客（在互联网中永生Gmeek）
-[https://www.bilibili.com/video/BV1GM4m1m7ZD](url)。">
+<meta name="description" content="内容
+● [更新日志](https://github.com/webmin/webmin/blob/master/CHANGELOG.md)
+● [关于](#关于)
+● [安装](#安装)[<img src='https://github.com/webmin-devel/webmin/blob/master/media/download-23x14-stable.png?raw=true' title='稳定版'>](http://webmin.com/download.html)[<img src='https://github.com/webmin-devel/webmin/blob/master/media/download-23x14-devel.png?raw=true' title='Development Versions'>](http://webmin.com/devel.html)
+● [文档](#文档)
+● [致谢](#致谢)
+● [许可](#许可)
+
+关于
+
+Webmin 是一个基于网页的类Unix服务器系统管理工具，全球安装超过 _1,000,000_ 次（没错，事宝藏！）。">
+<meta property="og:title" content="Webmin-网页的类Unix服务器系统管理工具-部署方法">
+<meta property="og:description" content="内容
+● [更新日志](https://github.com/webmin/webmin/blob/master/CHANGELOG.md)
+● [关于](#关于)
+● [安装](#安装)[<img src='https://github.com/webmin-devel/webmin/blob/master/media/download-23x14-stable.png?raw=true' title='稳定版'>](http://webmin.com/download.html)[<img src='https://github.com/webmin-devel/webmin/blob/master/media/download-23x14-devel.png?raw=true' title='Development Versions'>](http://webmin.com/devel.html)
+● [文档](#文档)
+● [致谢](#致谢)
+● [许可](#许可)
+
+关于
+
+Webmin 是一个基于网页的类Unix服务器系统管理工具，全球安装超过 _1,000,000_ 次（没错，事宝藏！）。">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://zac5451.github.io/post/shou-ce--Handbook.html">
+<meta property="og:url" content="https://zac5451.github.io/post/Webmin--wang-ye-de-lei-Unix-fu-wu-qi-xi-tong-guan-li-gong-ju---bu-shu-fang-fa.html">
 <meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
-<title>手册/Handbook</title>
+<title>Webmin-网页的类Unix服务器系统管理工具-部署方法</title>
 
 
 </head>
@@ -72,7 +66,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 <body>
     <div id="header">
-<h1 class="postTitle">手册/Handbook</h1>
+<h1 class="postTitle">Webmin-网页的类Unix服务器系统管理工具-部署方法</h1>
 <div class="title-right">
     <a href="https://zac5451.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
         <svg class="octicon" width="16" height="16">
@@ -80,7 +74,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         </svg>
     </a>
     
-    <a href="https://github.com/Zac5451/zac5451.github.io/issues/1" target="_blank" class="btn btn-invisible circle" title="Issue">
+    <a href="https://github.com/Zac5451/zac5451.github.io/issues/10" target="_blank" class="btn btn-invisible circle" title="Issue">
         <svg class="octicon" width="16" height="16">
             <path id="pathIssue" fill-rule="evenodd"></path>
         </svg>
@@ -96,20 +90,46 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><p>Linux 上Nvidia驱动无法显示/Driver Not Loaded<br>
-<a href="https://dev.to/simonpham/how-to-fix-ubuntu-nvidia-driver-is-not-loaded-2ipp" rel="nofollow">https://dev.to/simonpham/how-to-fix-ubuntu-nvidia-driver-is-not-loaded-2ipp</a><br>
-怎样将 iPhone 备份保存到 Mac 的外部存储设备<br>
-<a href="https://sspai.com/post/76016" rel="nofollow">https://sspai.com/post/76016</a><br>
-在Linux安装webtop远程桌面，环境docker容器<br>
-<a href="https://www.bilibili.com/video/BV1LA4m1F7Jr" rel="nofollow">https://www.bilibili.com/video/BV1LA4m1F7Jr</a><br>
-在Linux中用docker安装android11，+guiscrcpy实现界面访问<br>
-<a href="https://www.bilibili.com/video/BV1eL41147v9" rel="nofollow">https://www.bilibili.com/video/BV1eL41147v9</a><br>
-docker WebUI https://<a href="https://portainer.io/" rel="nofollow">portainer.io</a><br>
-Android TV x86 <a href="https://www.bilibili.com/video/BV1iZ4y1X7sY" rel="nofollow">https://www.bilibili.com/video/BV1iZ4y1X7sY</a><br>
-OpenWrt软路由创建SSID<br>
-<a href="url">https://www.bilibili.com/video/BV1WZ421a7x8</a><br>
-使用GitHub账号搭建个人博客（在互联网中永生Gmeek）<br>
-<a href="url">https://www.bilibili.com/video/BV1GM4m1m7ZD</a></p></div>
+<div class="markdown-body" id="postBody"><p>内容<br>
+● <a href="https://github.com/webmin/webmin/blob/master/CHANGELOG.md">更新日志</a><br>
+● <a href="#%E5%85%B3%E4%BA%8E">关于</a><br>
+● <a href="#%E5%AE%89%E8%A3%85">安装</a><a href="http://webmin.com/download.html" rel="nofollow"><img src="https://github.com/webmin-devel/webmin/blob/master/media/download-23x14-stable.png?raw=true" title="稳定版" style="max-width: 100%;"></a><a href="http://webmin.com/devel.html" rel="nofollow"><img src="https://github.com/webmin-devel/webmin/blob/master/media/download-23x14-devel.png?raw=true" title="Development Versions" style="max-width: 100%;"></a><br>
+● <a href="#%E6%96%87%E6%A1%A3">文档</a><br>
+● <a href="#%E8%87%B4%E8%B0%A2">致谢</a><br>
+● <a href="#%E8%AE%B8%E5%8F%AF">许可</a></p>
+<p>关于</p>
+<p>Webmin 是一个基于网页的类Unix服务器系统管理工具，全球安装超过 <em>1,000,000</em> 次（没错，事宝藏！）。有了它，运维快人一步！比如用户，磁盘配额，服务或者配置文件，比如更改，控制开源应用，再比如 BIND DNS Server，管理 Apache HTTP Server， PHP， MySQL， 还有<a href="https://doxfer.webmin.com/Webmin/Introduction" rel="nofollow">许多许多好东西</a>。</p>
+<p><a href="https://www.youtube.com/watch?v=daYG6O4AsEw" rel="nofollow"><img src="https://user-images.githubusercontent.com/4426533/114315375-61a1c480-9b07-11eb-9aaf-4aa949a39ab7.png" alt="Quick UI overview 2021" style="max-width: 100%;"></a></p>
+<p>可通过安装可定制的模块来扩展可用性。 除此之外，还有另外两个扩展其功能的项目：</p>
+<p>● <a href="https://www.virtualmin.com" rel="nofollow">Virtualmin</a> 是一个强大的，灵活的，最受欢迎的，最全面的 Linux 和 BSD 系统网络托管控制面板，在全球拥有超过 <em>150,000次</em> 安装。它有开源社区支持的版本，以及功能更丰富的Premium版本；<br>
+● <a href="https://github.com/webmin/usermin">Usermin</a> 顾名思义，呈现和控制以用户为中心的功能子集，而不是管理员级别的任务。</p>
+<p>Webmin 包括 <em>116</em> 个<a href="https://doxfer.webmin.com/Webmin/Webmin_Modules" rel="nofollow">标准模块</a>，并且至少有同样多的第三方模块。</p>
+<p>系统要求<br>
+Perl 5.10 或更高。</p>
+<p>安装<br>
+Webmin 可以两种方法安装：</p>
+<ol>
+<li>
+<p>下载一个预编译包，可用于不同的发行版（CentOS, Fedora, SuSE, Mandriva, Debian, Ubuntu, Solaris 和 <a href="http://www.webmin.com/support.html" rel="nofollow">其他发行版</a>）。<a href="http://webmin.com/download.html" rel="nofollow">下载页面直达车</a>;<br>
+<kbd>注：非常建议<a href="https://doxfer.webmin.com/Webmin/Installation" rel="nofollow">在你的系统添加源</a>，这样可以自动更新</kbd></p>
+</li>
+<li>
+<p>下载并解压<a href="https://prdownloads.sourceforge.net/webadmin/webmin-1.996.tar.gz" rel="nofollow">源码</a>然后运行<a href="http://www.webmin.com/tgz.html" rel="nofollow"><em>setup.sh</em></a> 脚本，无需任何选项，也就是说会直接安装到当前目录。或者使用命令行参数，例如目标目录。<br>
+<kbd>注：如果你正在安装 Webmin <a href="http://www.webmin.com/windows.html" rel="nofollow">到Windows</a> 系统上，你必须运行 <code class="notranslate">perl setup.pl</code> 命令。Windows 版能否正常运行取决于许多程序，和可能不属于标准发行版的模块。你需要 <em>process.exe</em> 命令， <em>sc.exe</em> 命令，以及 <em>Win32::Daemon</em> Perl 模块。</kbd></p>
+</li>
+</ol>
+<p>文档<br>
+完整的 Webmin 还有它所有模块的详细配置都在<a href="https://doxfer.webmin.com/Webmin/Main_Page" rel="nofollow">维基页面</a>.</p>
+<p>致谢</p>
+<p>首席开发者</p>
+<p>● <a href="http://www.webmin.com/about.html" rel="nofollow">Jamie Cameron</a> <a href="https://www.linkedin.com/in/jamiecameron2" rel="nofollow"><img src="https://github.com/webmin-devel/webmin/blob/master/media/linkedin-15x15.png?raw=true" alt="" style="max-width: 100%;"></a></p>
+<p>贡献者</p>
+<p>● <a href="https://github.com/swelljoe">Joe Cooper</a><br>
+● <a href="https://github.com/iliajie">Ilia Rostovtsev</a><br>
+● <a href="https://github.com/gnadelwartz">Kay Marquardt</a><br>
+● <a href="https://github.com/nawawi">Nawawi Jamili</a> + <a href="https://github.com/webmin/webmin/graphs/contributors">其他无偿奉献的开发者</a></p>
+<p>许可</p>
+<p>Webmin 基于 <a href="https://github.com/webmin/webmin/blob/master/LICENCE">BSD 许可</a>发布。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
