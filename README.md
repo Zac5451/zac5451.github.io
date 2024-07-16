@@ -1,4 +1,4 @@
-# Blog Title :link: https://Zac5451.github.io/zac.github.io 
+# Blog Title :link: https://Zac5451.github.io
 ### :page_facing_up: [1](https://Zac5451.github.io/zac.github.io/tag.html) 
 ### :speech_balloon: 0 
 ### :hibiscus: 613 
