@@ -7,8 +7,7 @@ https://www.bilibili.com/video/BV1LA4m1F7Jr
 在Linux中用docker安装android11，+guiscrcpy实现界面访问
 https://www.bilibili.com/video/BV1eL41147v9
 docker WebUI https://[portainer.io](https://portainer.io/)
-Android TV x86 
-[](https://www.bilibili.com/video/BV1iZ4y1X7sY)
+Android TV x86 https://www.bilibili.com/video/BV1iZ4y1X7sY
 OpenWrt软路由创建SSID
 [https://www.bilibili.com/video/BV1WZ421a7x8](url)
 使用GitHub账号搭建个人博客（在互联网中永生Gmeek）
