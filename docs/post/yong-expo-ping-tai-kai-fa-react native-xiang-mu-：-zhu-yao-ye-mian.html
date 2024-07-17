@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="用expo平台开发react native项目，其中有一个页面需要实现以下功能：
+1、点按开始录音
+2、根据识别的语音显示对应文字
+3、语音和文字都不是通用语言，是一种咒语（也可以理解成是一种小语种）
+4、文字的显示方式类似歌词，能实现滚动，随着语音对应到相应的内容
+5、被识别的内容前后顺序是固定的，有2500个音节
+6、完成第一遍记录为1遍，当第一遍语音识别结束，可以重复继续刚才的动作。">
+<meta property="og:title" content="用expo平台开发react native项目：主要页面">
+<meta property="og:description" content="用expo平台开发react native项目，其中有一个页面需要实现以下功能：
+1、点按开始录音
+2、根据识别的语音显示对应文字
+3、语音和文字都不是通用语言，是一种咒语（也可以理解成是一种小语种）
+4、文字的显示方式类似歌词，能实现滚动，随着语音对应到相应的内容
+5、被识别的内容前后顺序是固定的，有2500个音节
+6、完成第一遍记录为1遍，当第一遍语音识别结束，可以重复继续刚才的动作。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://zac5451.github.io/post/yong-expo-ping-tai-kai-fa-react%20native-xiang-mu-%EF%BC%9A-zhu-yao-ye-mian.html">
+<meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
+<title>用expo平台开发react native项目：主要页面</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">用expo平台开发react native项目：主要页面</h1>
+<div class="title-right">
+    <a href="https://zac5451.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Zac5451/zac5451.github.io/issues/13" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>用expo平台开发react native项目，其中有一个页面需要实现以下功能：<br>
+1、点按开始录音<br>
+2、根据识别的语音显示对应文字<br>
+3、语音和文字都不是通用语言，是一种咒语（也可以理解成是一种小语种）<br>
+4、文字的显示方式类似歌词，能实现滚动，随着语音对应到相应的内容<br>
+5、被识别的内容前后顺序是固定的，有2500个音节<br>
+6、完成第一遍记录为1遍，当第一遍语音识别结束，可以重复继续刚才的动作。</p>
+<p>要实现这个功能，您需要将多个技术结合在一起，包括语音识别、文字滚动显示、和多次语音识别的功能。以下是一个简化的实现思路和代码示例：</p>
+<h3>步骤</h3>
+<ol>
+<li>
+<p><strong>初始化 React Native 项目</strong>：<br>
+确保已经安装了 Expo CLI 并初始化了一个新的项目。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">expo init SpeechToTextLyrics
+<span class="pl-c1">cd</span> SpeechToTextLyrics</pre></div>
+</li>
+<li>
+<p><strong>安装必要的库</strong>：<br>
+安装用于语音识别的库（如 <code class="notranslate">@react-native-voice/voice</code>）和其他必要的依赖。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">expo install @react-native-voice/voice</pre></div>
+</li>
+<li>
+<p><strong>实现语音识别</strong>：<br>
+使用 <code class="notranslate">@react-native-voice/voice</code> 库来实现语音识别，并将结果映射到对应的文字。</p>
+</li>
+<li>
+<p><strong>实现歌词滚动显示</strong>：<br>
+使用 React Native 的 <code class="notranslate">ScrollView</code> 和 <code class="notranslate">Animated</code> 组件来实现滚动效果。</p>
+</li>
+<li>
+<p><strong>处理自定义语言</strong>：<br>
+由于您使用的是一种非通用语言（如咒语），需要提前将每个语音片段与对应的文字进行映射。</p>
+</li>
+<li>
+<p><strong>实现多次语音识别</strong>：<br>
+在一次识别结束后，可以重复相同的动作。</p>
+</li>
+</ol>
+<h3>代码示例</h3>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-v">React</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-s1">useState</span><span class="pl-kos">,</span> <span class="pl-s1">useEffect</span><span class="pl-kos">,</span> <span class="pl-s1">useRef</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">StyleSheet</span><span class="pl-kos">,</span> <span class="pl-v">Text</span><span class="pl-kos">,</span> <span class="pl-v">Button</span><span class="pl-kos">,</span> <span class="pl-v">View</span><span class="pl-kos">,</span> <span class="pl-v">ScrollView</span><span class="pl-kos">,</span> <span class="pl-v">Animated</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-v">Voice</span> <span class="pl-k">from</span> <span class="pl-s">'@react-native-voice/voice'</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-k">function</span> <span class="pl-v">App</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">started</span><span class="pl-kos">,</span> <span class="pl-s1">setStarted</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useState</span><span class="pl-kos">(</span><span class="pl-c1">false</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">results</span><span class="pl-kos">,</span> <span class="pl-s1">setResults</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useState</span><span class="pl-kos">(</span><span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-k">const</span> <span class="pl-kos">[</span><span class="pl-s1">index</span><span class="pl-kos">,</span> <span class="pl-s1">setIndex</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-en">useState</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// 当前识别的音节索引</span>
+  <span class="pl-k">const</span> <span class="pl-s1">scrollY</span> <span class="pl-c1">=</span> <span class="pl-en">useRef</span><span class="pl-kos">(</span><span class="pl-k">new</span> <span class="pl-v">Animated</span><span class="pl-kos">.</span><span class="pl-c1">Value</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-c1">current</span><span class="pl-kos">;</span> <span class="pl-c">// 滚动动画</span>
+
+  <span class="pl-en">useEffect</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-v">Voice</span><span class="pl-kos">.</span><span class="pl-c1">onSpeechError</span> <span class="pl-c1">=</span> <span class="pl-s1">onSpeechError</span><span class="pl-kos">;</span>
+    <span class="pl-v">Voice</span><span class="pl-kos">.</span><span class="pl-c1">onSpeechResults</span> <span class="pl-c1">=</span> <span class="pl-s1">onSpeechResults</span><span class="pl-kos">;</span>
+
+    <span class="pl-k">return</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+      <span class="pl-v">Voice</span><span class="pl-kos">.</span><span class="pl-en">destroy</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">then</span><span class="pl-kos">(</span><span class="pl-v">Voice</span><span class="pl-kos">.</span><span class="pl-c1">removeAllListeners</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-kos">[</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">const</span> <span class="pl-en">startSpeechToText</span> <span class="pl-c1">=</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-k">await</span> <span class="pl-v">Voice</span><span class="pl-kos">.</span><span class="pl-en">start</span><span class="pl-kos">(</span><span class="pl-s">"en-NZ"</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// 注意这里要选择正确的语言或语言包</span>
+    <span class="pl-s1">setStarted</span><span class="pl-kos">(</span><span class="pl-c1">true</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">const</span> <span class="pl-en">stopSpeechToText</span> <span class="pl-c1">=</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-k">await</span> <span class="pl-v">Voice</span><span class="pl-kos">.</span><span class="pl-en">stop</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">setStarted</span><span class="pl-kos">(</span><span class="pl-c1">false</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">const</span> <span class="pl-en">onSpeechResults</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">result</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">recognizedText</span> <span class="pl-c1">=</span> <span class="pl-s1">result</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">[</span><span class="pl-c1">0</span><span class="pl-kos">]</span><span class="pl-kos">;</span> <span class="pl-c">// 假设一次只识别一个音节</span>
+    <span class="pl-s1">setResults</span><span class="pl-kos">(</span><span class="pl-s1">prevResults</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">[</span>...<span class="pl-s1">prevResults</span><span class="pl-kos">,</span> <span class="pl-s1">recognizedText</span><span class="pl-kos">]</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-s1">setIndex</span><span class="pl-kos">(</span><span class="pl-s1">prevIndex</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">prevIndex</span> <span class="pl-c1">+</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    
+    <span class="pl-c">// 滚动到下一个音节</span>
+    <span class="pl-v">Animated</span><span class="pl-kos">.</span><span class="pl-en">timing</span><span class="pl-kos">(</span><span class="pl-s1">scrollY</span><span class="pl-kos">,</span> <span class="pl-kos">{</span>
+      <span class="pl-c1">toValue</span>: <span class="pl-kos">(</span><span class="pl-s1">index</span> <span class="pl-c1">+</span> <span class="pl-c1">1</span><span class="pl-kos">)</span> <span class="pl-c1">*</span> <span class="pl-c1">30</span><span class="pl-kos">,</span> <span class="pl-c">// 假设每行高30</span>
+      <span class="pl-c1">duration</span>: <span class="pl-c1">500</span><span class="pl-kos">,</span>
+      <span class="pl-c1">useNativeDriver</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">start</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">const</span> <span class="pl-en">onSpeechError</span> <span class="pl-c1">=</span> <span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+  <span class="pl-c">// 假设有2500个音节，每个音节对应一个字符串</span>
+  <span class="pl-k">const</span> <span class="pl-s1">spellTexts</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Array</span><span class="pl-kos">(</span><span class="pl-c1">2500</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">fill</span><span class="pl-kos">(</span><span class="pl-c1">null</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">_</span><span class="pl-kos">,</span> <span class="pl-s1">i</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s">`咒语音节<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">i</span> <span class="pl-c1">+</span> <span class="pl-c1">1</span><span class="pl-kos">}</span></span>`</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+
+  <span class="pl-k">return</span> <span class="pl-kos">(</span>
+    <span class="pl-c1">&lt;</span><span class="pl-ent">View</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">styles</span><span class="pl-kos">.</span><span class="pl-c1">container</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+      <span class="pl-kos">{</span><span class="pl-c1">!</span><span class="pl-s1">started</span> ? <span class="pl-c1">&lt;</span><span class="pl-ent">Button</span> <span class="pl-c1">title</span><span class="pl-c1">=</span><span class="pl-s">'Start Speech to Text'</span> <span class="pl-c1">onPress</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-en">startSpeechToText</span><span class="pl-kos">}</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span> : <span class="pl-c1">undefined</span><span class="pl-kos">}</span>
+      <span class="pl-kos">{</span><span class="pl-s1">started</span> ? <span class="pl-c1">&lt;</span><span class="pl-ent">Button</span> <span class="pl-c1">title</span><span class="pl-c1">=</span><span class="pl-s">'Stop Speech to Text'</span> <span class="pl-c1">onPress</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-en">stopSpeechToText</span><span class="pl-kos">}</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span> : <span class="pl-c1">undefined</span><span class="pl-kos">}</span>
+      <span class="pl-c1">&lt;</span><span class="pl-v">Animated</span><span class="pl-kos">.</span><span class="pl-v">ScrollView</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">[</span><span class="pl-s1">styles</span><span class="pl-kos">.</span><span class="pl-c1">scrollView</span><span class="pl-kos">,</span> <span class="pl-kos">{</span> <span class="pl-c1">transform</span>: <span class="pl-kos">[</span><span class="pl-kos">{</span> <span class="pl-c1">translateY</span>: <span class="pl-s1">scrollY</span> <span class="pl-kos">}</span><span class="pl-kos">]</span> <span class="pl-kos">}</span><span class="pl-kos">]</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span>
+        <span class="pl-kos">{</span><span class="pl-s1">spellTexts</span><span class="pl-kos">.</span><span class="pl-en">map</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">spell</span><span class="pl-kos">,</span> <span class="pl-s1">i</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">(</span>
+          <span class="pl-c1">&lt;</span><span class="pl-ent">Text</span> <span class="pl-c1">key</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">i</span><span class="pl-kos">}</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-s1">styles</span><span class="pl-kos">.</span><span class="pl-c1">text</span><span class="pl-kos">}</span><span class="pl-c1">&gt;</span><span class="pl-kos">{</span><span class="pl-s1">spell</span><span class="pl-kos">}</span><span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">Text</span><span class="pl-c1">&gt;</span>
+        <span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">}</span>
+      <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-v">Animated</span><span class="pl-kos">.</span><span class="pl-v">ScrollView</span><span class="pl-c1">&gt;</span>
+      <span class="pl-c1">&lt;</span><span class="pl-ent">StatusBar</span> <span class="pl-c1">style</span><span class="pl-c1">=</span><span class="pl-s">"auto"</span> <span class="pl-c1">/</span><span class="pl-c1">&gt;</span>
+    <span class="pl-c1">&lt;</span><span class="pl-c1">/</span><span class="pl-ent">View</span><span class="pl-c1">&gt;</span>
+  <span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">styles</span> <span class="pl-c1">=</span> <span class="pl-v">StyleSheet</span><span class="pl-kos">.</span><span class="pl-en">create</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">container</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">flex</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span>
+    <span class="pl-c1">backgroundColor</span>: <span class="pl-s">'#fff'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">alignItems</span>: <span class="pl-s">'center'</span><span class="pl-kos">,</span>
+    <span class="pl-c1">justifyContent</span>: <span class="pl-s">'center'</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">scrollView</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">height</span>: <span class="pl-c1">300</span><span class="pl-kos">,</span> <span class="pl-c">// 假设显示区域高度为300</span>
+    <span class="pl-c1">width</span>: <span class="pl-s">'100%'</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+  <span class="pl-c1">text</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">fontSize</span>: <span class="pl-c1">20</span><span class="pl-kos">,</span>
+    <span class="pl-c1">padding</span>: <span class="pl-c1">5</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<h3>关键点解释</h3>
+<ol>
+<li>
+<p><strong>语音识别事件处理</strong>：</p>
+<ul>
+<li><code class="notranslate">onSpeechResults</code>：处理语音识别结果，将识别出的音节加入结果列表，并滚动到下一行。</li>
+<li><code class="notranslate">onSpeechError</code>：处理语音识别错误。</li>
+</ul>
+</li>
+<li>
+<p><strong>滚动动画</strong>：<br>
+使用 <code class="notranslate">Animated</code> 和 <code class="notranslate">ScrollView</code> 实现歌词的滚动效果，随着每个音节的识别，滚动到下一行。</p>
+</li>
+<li>
+<p><strong>自定义语言映射</strong>：<br>
+提前定义2500个音节对应的字符串数组 <code class="notranslate">spellTexts</code>，在语音识别结果与该数组进行匹配。</p>
+</li>
+</ol>
+<h3>测试和调试</h3>
+<ul>
+<li>确保设备和模拟器上正确配置了语音识别功能。</li>
+<li>调整 <code class="notranslate">startSpeechToText</code> 中的语言参数，确保识别正确的语言或咒语音节。</li>
+<li>根据具体需求调整滚动效果和识别逻辑。</li>
+</ul>
+<p>希望这些信息能够帮助您实现所需的功能。如果有进一步的问题或需求，请随时提出。</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://zac5451.github.io"> SuperZAX </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Zac5451/zac5451.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+</html>
