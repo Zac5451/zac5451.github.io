@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="创建一个包含特定语言或自定义语音识别功能的库涉及多个步骤。">
+<meta property="og:title" content="如何制作一个类似@react-native-voice/voice 的库">
+<meta property="og:description" content="创建一个包含特定语言或自定义语音识别功能的库涉及多个步骤。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://zac5451.github.io/post/ru-he-zhi-zuo-yi-ge-lei-si-%40react-native-voice-voice%20-de-ku.html">
+<meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
+<title>如何制作一个类似@react-native-voice/voice 的库</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">如何制作一个类似@react-native-voice/voice 的库</h1>
+<div class="title-right">
+    <a href="https://zac5451.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Zac5451/zac5451.github.io/issues/12" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>创建一个包含特定语言或自定义语音识别功能的库涉及多个步骤。首先，您需要理解语音识别的基本原理，然后选择适当的工具和服务来实现这些功能。以下是一个详细的步骤指南，帮助您实现自定义语音识别库。</p>
+<h3>步骤指南</h3>
+<ol>
+<li>
+<p><strong>选择语音识别引擎</strong>：</p>
+<ul>
+<li>选择支持自定义语言或特定小语种的语音识别引擎。可以考虑使用 Google Cloud Speech-to-Text、Microsoft Azure Speech Service、或者 Kaldi（一个开源语音识别工具）。</li>
+</ul>
+</li>
+<li>
+<p><strong>准备语音数据</strong>：</p>
+<ul>
+<li>收集并准备大量的语音数据，用于训练语音识别模型。这些数据应包括您想要识别的所有音节。</li>
+</ul>
+</li>
+<li>
+<p><strong>训练模型</strong>：</p>
+<ul>
+<li>使用语音识别引擎的训练工具来训练您的自定义模型。对于开源工具如 Kaldi，可以根据其文档进行模型训练。</li>
+</ul>
+</li>
+<li>
+<p><strong>部署模型</strong>：</p>
+<ul>
+<li>将训练好的模型部署到云端或本地服务器，供应用程序调用。</li>
+</ul>
+</li>
+<li>
+<p><strong>创建 React Native 模块</strong>：</p>
+<ul>
+<li>使用原生模块（Native Modules）在 React Native 中集成语音识别引擎。这个模块需要与您选择的语音识别服务进行通信。</li>
+</ul>
+</li>
+</ol>
+<h3>详细步骤</h3>
+<h4>1. 选择语音识别引擎</h4>
+<p>选择一个支持自定义语言的语音识别引擎，例如：</p>
+<ul>
+<li><a href="https://cloud.google.com/speech-to-text" rel="nofollow">Google Cloud Speech-to-Text</a></li>
+<li><a href="https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/" rel="nofollow">Microsoft Azure Speech Service</a></li>
+<li><a href="https://kaldi-asr.org/" rel="nofollow">Kaldi</a></li>
+</ul>
+<h4>2. 准备语音数据</h4>
+<p>收集和准备您的语音数据。这些数据应该覆盖您需要识别的所有音节，并且数据质量应尽可能高。</p>
+<h4>3. 训练模型</h4>
+<p>根据选择的语音识别引擎，进行模型训练。以 Kaldi 为例，可以按照其<a href="http://kaldi-asr.org/doc/tutorial.html" rel="nofollow">官方教程</a>进行操作。</p>
+<h4>4. 部署模型</h4>
+<p>将训练好的模型部署到云服务或本地服务器。对于云服务，您可以参考对应的 API 文档进行部署。</p>
+<h4>5. 创建 React Native 模块</h4>
+<p>创建一个自定义的 React Native 模块，用于集成您的语音识别引擎。以下是一个简单的示例，展示如何创建一个原生模块并调用语音识别服务：</p>
+<h5>iOS 示例（Swift）</h5>
+<ol>
+<li>
+<p><strong>创建原生模块</strong></p>
+<p>创建一个新的 Swift 文件，例如 <code class="notranslate">SpeechToTextModule.swift</code>。</p>
+</li>
+</ol>
+<div class="highlight highlight-source-swift"><pre class="notranslate">import Foundation
+import Speech
+
+<span class="pl-s1">@<span class="pl-smi">objc</span><span class="pl-kos">(</span>SpeechToTextModule<span class="pl-kos">)</span></span>
+<span class="pl-k">class</span> <span class="pl-smi">SpeechToTextModule</span><span class="pl-kos">:</span> <span class="pl-smi">NSObject</span> <span class="pl-kos">{</span>
+  <span class="pl-k">private</span> <span class="pl-k">var</span> <span class="pl-s1"><span class="pl-c1">speechRecognizer</span></span><span class="pl-kos">:</span> <span class="pl-smi">SFSpeechRecognizer</span><span class="pl-c1"><span class="pl-c1">?</span></span>
+  <span class="pl-k">private</span> <span class="pl-k">var</span> <span class="pl-s1"><span class="pl-c1">recognitionRequest</span></span><span class="pl-kos">:</span> <span class="pl-smi">SFSpeechAudioBufferRecognitionRequest</span><span class="pl-c1"><span class="pl-c1">?</span></span>
+  <span class="pl-k">private</span> <span class="pl-k">var</span> <span class="pl-s1"><span class="pl-c1">recognitionTask</span></span><span class="pl-kos">:</span> <span class="pl-smi">SFSpeechRecognitionTask</span><span class="pl-c1"><span class="pl-c1">?</span></span>
+  <span class="pl-k">private</span> <span class="pl-k">var</span> <span class="pl-s1"><span class="pl-c1">audioEngine</span></span> <span class="pl-c1">=</span> <span class="pl-en">AVAudioEngine</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+
+  <span class="pl-s1">@<span class="pl-smi">objc</span></span>
+  <span class="pl-en">func</span> startRecognition<span class="pl-kos">(</span>_ languageCode<span class="pl-kos">:</span> <span class="pl-smi">String</span><span class="pl-kos">,</span> resolver resolve<span class="pl-kos">:</span> <span class="pl-k">@escaping</span> <span class="pl-smi">RCTPromiseResolveBlock</span><span class="pl-kos">,</span> rejecter reject<span class="pl-kos">:</span> <span class="pl-k">@escaping</span> <span class="pl-smi">RCTPromiseRejectBlock</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    speechRecognizer <span class="pl-c1">=</span> <span class="pl-en">SFSpeechRecognizer</span><span class="pl-kos">(</span>locale<span class="pl-kos">:</span> <span class="pl-en">Locale</span><span class="pl-kos">(</span>identifier<span class="pl-kos">:</span> languageCode<span class="pl-kos">)</span><span class="pl-kos">)</span>
+    
+    guard <span class="pl-k">let</span> speechRecognizer <span class="pl-c1">=</span> speechRecognizer<span class="pl-kos">,</span> speechRecognizer<span class="pl-kos">.</span>isAvailable <span class="pl-k">else</span> <span class="pl-kos">{</span>
+      <span class="pl-en">reject</span><span class="pl-kos">(</span><span class="pl-s">"</span><span class="pl-s">E_SPEECH_NOT_AVAILABLE</span><span class="pl-s">"</span><span class="pl-kos">,</span> <span class="pl-s">"</span><span class="pl-s">Speech recognizer is not available</span><span class="pl-s">"</span><span class="pl-kos">,</span> <span class="pl-smi">nil</span><span class="pl-kos">)</span>
+      <span class="pl-k">return</span>
+    <span class="pl-kos">}</span>
+
+    recognitionRequest <span class="pl-c1">=</span> <span class="pl-en">SFSpeechAudioBufferRecognitionRequest</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+
+    <span class="pl-k">let</span> <span class="pl-s1">inputNode</span> <span class="pl-c1">=</span> audioEngine<span class="pl-kos">.</span>inputNode
+
+    guard <span class="pl-k">let</span> recognitionRequest <span class="pl-c1">=</span> recognitionRequest <span class="pl-k">else</span> <span class="pl-kos">{</span>
+      <span class="pl-en">reject</span><span class="pl-kos">(</span><span class="pl-s">"</span><span class="pl-s">E_RECOGNITION_REQUEST_INIT</span><span class="pl-s">"</span><span class="pl-kos">,</span> <span class="pl-s">"</span><span class="pl-s">Unable to create recognition request</span><span class="pl-s">"</span><span class="pl-kos">,</span> <span class="pl-smi">nil</span><span class="pl-kos">)</span>
+      <span class="pl-k">return</span>
+    <span class="pl-kos">}</span>
+
+    recognitionRequest<span class="pl-kos">.</span>shouldReportPartialResults <span class="pl-c1">=</span> true
+
+    recognitionTask <span class="pl-c1">=</span> speechRecognizer<span class="pl-kos">.</span><span class="pl-en">recognitionTask</span><span class="pl-kos">(</span>with<span class="pl-kos">:</span> recognitionRequest<span class="pl-kos">)</span> <span class="pl-kos">{</span> result<span class="pl-kos">,</span> error <span class="pl-k">in</span>
+      if <span class="pl-k">let</span> result <span class="pl-c1">=</span> result <span class="pl-kos">{</span>
+        <span class="pl-k">let</span> <span class="pl-s1">transcription</span> <span class="pl-c1">=</span> result<span class="pl-kos">.</span>bestTranscription<span class="pl-kos">.</span>formattedString
+        <span class="pl-en">resolve</span><span class="pl-kos">(</span>transcription<span class="pl-kos">)</span>
+      <span class="pl-kos">}</span> <span class="pl-k">else</span> if <span class="pl-k">let</span> error <span class="pl-c1">=</span> error <span class="pl-kos">{</span>
+        <span class="pl-en">reject</span><span class="pl-kos">(</span><span class="pl-s">"</span><span class="pl-s">E_RECOGNITION_ERROR</span><span class="pl-s">"</span><span class="pl-kos">,</span> error<span class="pl-kos">.</span>localizedDescription<span class="pl-kos">,</span> error<span class="pl-kos">)</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+
+    <span class="pl-k">let</span> <span class="pl-s1">recordingFormat</span> <span class="pl-c1">=</span> inputNode<span class="pl-kos">.</span><span class="pl-en">outputFormat</span><span class="pl-kos">(</span>forBus<span class="pl-kos">:</span> <span class="pl-c1">0</span><span class="pl-kos">)</span>
+    inputNode<span class="pl-kos">.</span><span class="pl-en">installTap</span><span class="pl-kos">(</span>onBus<span class="pl-kos">:</span> <span class="pl-c1">0</span><span class="pl-kos">,</span> bufferSize<span class="pl-kos">:</span> <span class="pl-c1">1024</span><span class="pl-kos">,</span> format<span class="pl-kos">:</span> recordingFormat<span class="pl-kos">)</span> <span class="pl-kos">{</span> buffer<span class="pl-kos">,</span> _ <span class="pl-k">in</span>
+      <span class="pl-smi">self</span><span class="pl-kos">.</span>recognitionRequest<span class="pl-c1"><span class="pl-c1">?</span></span><span class="pl-kos">.</span><span class="pl-en">append</span><span class="pl-kos">(</span>buffer<span class="pl-kos">)</span>
+    <span class="pl-kos">}</span>
+
+    audioEngine<span class="pl-kos">.</span><span class="pl-en">prepare</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+    <span class="pl-k">do</span> <span class="pl-kos">{</span>
+      <span class="pl-c1"><span class="pl-k">try</span></span> audioEngine<span class="pl-kos">.</span><span class="pl-en">start</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+    <span class="pl-kos">}</span> <span class="pl-k">catch</span> <span class="pl-kos">{</span>
+      <span class="pl-en">reject</span><span class="pl-kos">(</span><span class="pl-s">"</span><span class="pl-s">E_AUDIO_ENGINE_ERROR</span><span class="pl-s">"</span><span class="pl-kos">,</span> <span class="pl-s">"</span><span class="pl-s">Audio engine couldn't start</span><span class="pl-s">"</span><span class="pl-kos">,</span> error<span class="pl-kos">)</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span>
+
+  <span class="pl-s1">@<span class="pl-smi">objc</span></span>
+  <span class="pl-en">func</span> stopRecognition<span class="pl-kos">(</span>_ resolve<span class="pl-kos">:</span> <span class="pl-k">@escaping</span> <span class="pl-smi">RCTPromiseResolveBlock</span><span class="pl-kos">,</span> rejecter reject<span class="pl-kos">:</span> <span class="pl-k">@escaping</span> <span class="pl-smi">RCTPromiseRejectBlock</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    audioEngine<span class="pl-kos">.</span><span class="pl-en">stop</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+    recognitionRequest<span class="pl-c1"><span class="pl-c1">?</span></span><span class="pl-kos">.</span><span class="pl-en">endAudio</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+    recognitionTask<span class="pl-c1"><span class="pl-c1">?</span></span><span class="pl-kos">.</span><span class="pl-en">cancel</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+    <span class="pl-en">resolve</span><span class="pl-kos">(</span><span class="pl-smi">nil</span><span class="pl-kos">)</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<ol start="2">
+<li><strong>注册模块</strong></li>
+</ol>
+<p>在 <code class="notranslate">SpeechToTextModule.m</code> 文件中注册模块。</p>
+<div class="highlight highlight-source-objc"><pre class="notranslate">#<span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">&lt;</span>React/RCTBridgeModule.h<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">@interface</span> <span class="pl-en">RCT_EXTERN_MODULE</span>(SpeechToTextModule, <span class="pl-c1">NSObject</span>)
+
+<span class="pl-en">RCT_EXTERN_METHOD</span>(startRecognition:(<span class="pl-c1">NSString</span> *)languageCode
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+
+RCT_EXTERN_METHOD(stopRecognition:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+
+@end</pre></div>
+<ol start="3">
+<li><strong>在 JavaScript 中调用模块</strong></li>
+</ol>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">NativeModules</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span><span class="pl-kos">;</span>
+
+<span class="pl-k">const</span> <span class="pl-kos">{</span> SpeechToTextModule <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-v">NativeModules</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-en">startRecognition</span> <span class="pl-c1">=</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">languageCode</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-k">try</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">transcription</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-v">SpeechToTextModule</span><span class="pl-kos">.</span><span class="pl-en">startRecognition</span><span class="pl-kos">(</span><span class="pl-s1">languageCode</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">return</span> <span class="pl-s1">transcription</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span> <span class="pl-k">catch</span> <span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">error</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">throw</span> <span class="pl-s1">error</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-en">stopRecognition</span> <span class="pl-c1">=</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-k">try</span> <span class="pl-kos">{</span>
+    <span class="pl-k">await</span> <span class="pl-v">SpeechToTextModule</span><span class="pl-kos">.</span><span class="pl-en">stopRecognition</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span> <span class="pl-k">catch</span> <span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">error</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">throw</span> <span class="pl-s1">error</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<h5>Android 示例（Java）</h5>
+<ol>
+<li>
+<p><strong>创建原生模块</strong></p>
+<p>创建一个新的 Java 文件，例如 <code class="notranslate">SpeechToTextModule.java</code>。</p>
+</li>
+</ol>
+<div class="highlight highlight-source-java"><pre class="notranslate"><span class="pl-k">package</span> <span class="pl-s1">com</span>.<span class="pl-s1">yourapp</span>;
+
+<span class="pl-k">import</span> <span class="pl-s1">android</span>.<span class="pl-s1">speech</span>.<span class="pl-s1">tts</span>.<span class="pl-s1">TextToSpeech</span>;
+<span class="pl-k">import</span> <span class="pl-s1">android</span>.<span class="pl-s1">speech</span>.<span class="pl-s1">SpeechRecognizer</span>;
+<span class="pl-k">import</span> <span class="pl-s1">android</span>.<span class="pl-s1">speech</span>.<span class="pl-s1">RecognitionListener</span>;
+<span class="pl-k">import</span> <span class="pl-s1">android</span>.<span class="pl-s1">content</span>.<span class="pl-s1">Intent</span>;
+<span class="pl-k">import</span> <span class="pl-s1">android</span>.<span class="pl-s1">content</span>.<span class="pl-s1">Context</span>;
+<span class="pl-k">import</span> <span class="pl-s1">android</span>.<span class="pl-s1">os</span>.<span class="pl-s1">Bundle</span>;
+
+<span class="pl-k">import</span> <span class="pl-s1">com</span>.<span class="pl-s1">facebook</span>.<span class="pl-s1">react</span>.<span class="pl-s1">bridge</span>.<span class="pl-s1">ReactApplicationContext</span>;
+<span class="pl-k">import</span> <span class="pl-s1">com</span>.<span class="pl-s1">facebook</span>.<span class="pl-s1">react</span>.<span class="pl-s1">bridge</span>.<span class="pl-s1">ReactContextBaseJavaModule</span>;
+<span class="pl-k">import</span> <span class="pl-s1">com</span>.<span class="pl-s1">facebook</span>.<span class="pl-s1">react</span>.<span class="pl-s1">bridge</span>.<span class="pl-s1">ReactMethod</span>;
+<span class="pl-k">import</span> <span class="pl-s1">com</span>.<span class="pl-s1">facebook</span>.<span class="pl-s1">react</span>.<span class="pl-s1">bridge</span>.<span class="pl-s1">Promise</span>;
+
+<span class="pl-k">import</span> <span class="pl-s1">java</span>.<span class="pl-s1">util</span>.<span class="pl-s1">Locale</span>;
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">SpeechToTextModule</span> <span class="pl-k">extends</span> <span class="pl-smi">ReactContextBaseJavaModule</span> {
+  <span class="pl-k">private</span> <span class="pl-smi">SpeechRecognizer</span> <span class="pl-s1">speechRecognizer</span>;
+  <span class="pl-k">private</span> <span class="pl-smi">Promise</span> <span class="pl-s1">promise</span>;
+
+  <span class="pl-smi">SpeechToTextModule</span>(<span class="pl-smi">ReactApplicationContext</span> <span class="pl-s1">context</span>) {
+    <span class="pl-en">super</span>(<span class="pl-s1">context</span>);
+    <span class="pl-s1">speechRecognizer</span> = <span class="pl-smi">SpeechRecognizer</span>.<span class="pl-en">createSpeechRecognizer</span>(<span class="pl-s1">context</span>);
+  }
+
+  <span class="pl-c1">@</span><span class="pl-c1">Override</span>
+  <span class="pl-k">public</span> <span class="pl-smi">String</span> <span class="pl-en">getName</span>() {
+    <span class="pl-k">return</span> <span class="pl-s">"SpeechToTextModule"</span>;
+  }
+
+  <span class="pl-c1">@</span><span class="pl-c1">ReactMethod</span>
+  <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">startRecognition</span>(<span class="pl-smi">String</span> <span class="pl-s1">languageCode</span>, <span class="pl-smi">Promise</span> <span class="pl-s1">promise</span>) {
+    <span class="pl-smi">this</span>.<span class="pl-s1">promise</span> = <span class="pl-s1">promise</span>;
+
+    <span class="pl-smi">Locale</span> <span class="pl-s1">locale</span> = <span class="pl-k">new</span> <span class="pl-smi">Locale</span>(<span class="pl-s1">languageCode</span>);
+    <span class="pl-smi">Intent</span> <span class="pl-s1">intent</span> = <span class="pl-k">new</span> <span class="pl-smi">Intent</span>(<span class="pl-smi">SpeechRecognizer</span>.<span class="pl-c1">ACTION_RECOGNIZE_SPEECH</span>);
+    <span class="pl-s1">intent</span>.<span class="pl-en">putExtra</span>(<span class="pl-smi">SpeechRecognizer</span>.<span class="pl-c1">EXTRA_LANGUAGE_MODEL</span>, <span class="pl-smi">SpeechRecognizer</span>.<span class="pl-c1">LANGUAGE_MODEL_FREE_FORM</span>);
+    <span class="pl-s1">intent</span>.<span class="pl-en">putExtra</span>(<span class="pl-smi">SpeechRecognizer</span>.<span class="pl-c1">EXTRA_LANGUAGE</span>, <span class="pl-s1">locale</span>);
+
+    <span class="pl-s1">speechRecognizer</span>.<span class="pl-en">setRecognitionListener</span>(<span class="pl-k">new</span> <span class="pl-smi">RecognitionListener</span>() {
+      <span class="pl-c1">@</span><span class="pl-c1">Override</span>
+      <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">onResults</span>(<span class="pl-smi">Bundle</span> <span class="pl-s1">results</span>) {
+        <span class="pl-smi">ArrayList</span>&lt;<span class="pl-smi">String</span>&gt; <span class="pl-s1">matches</span> = <span class="pl-s1">results</span>.<span class="pl-en">getStringArrayList</span>(<span class="pl-smi">SpeechRecognizer</span>.<span class="pl-c1">RESULTS_RECOGNITION</span>);
+        <span class="pl-k">if</span> (<span class="pl-s1">matches</span> != <span class="pl-c1">null</span> &amp;&amp; !<span class="pl-s1">matches</span>.<span class="pl-en">isEmpty</span>()) {
+          <span class="pl-s1">promise</span>.<span class="pl-en">resolve</span>(<span class="pl-s1">matches</span>.<span class="pl-en">get</span>(<span class="pl-c1">0</span>));
+        } <span class="pl-k">else</span> {
+          <span class="pl-s1">promise</span>.<span class="pl-en">reject</span>(<span class="pl-s">"E_NO_RESULTS"</span>, <span class="pl-s">"No recognition results"</span>);
+        }
+      }
+
+      <span class="pl-c1">@</span><span class="pl-c1">Override</span>
+      <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">onError</span>(<span class="pl-smi">int</span> <span class="pl-s1">error</span>) {
+        <span class="pl-s1">promise</span>.<span class="pl-en">reject</span>(<span class="pl-s">"E_RECOGNITION_ERROR"</span>, <span class="pl-s">"Recognition error: "</span> + <span class="pl-s1">error</span>);
+      }
+
+      <span class="pl-c">// Implement other required methods of RecognitionListener</span>
+      <span class="pl-c">// ...</span>
+    });
+
+    <span class="pl-s1">speechRecognizer</span>.<span class="pl-en">startListening</span>(<span class="pl-s1">intent</span>);
+  }
+
+  <span class="pl-c1">@</span><span class="pl-c1">ReactMethod</span>
+  <span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">stopRecognition</span>(<span class="pl-smi">Promise</span> <span class="pl-s1">promise</span>) {
+    <span class="pl-s1">speechRecognizer</span>.<span class="pl-en">stopListening</span>();
+    <span class="pl-s1">promise</span>.<span class="pl-en">resolve</span>(<span class="pl-c1">null</span>);
+  }
+}</pre></div>
+<ol start="2">
+<li><strong>注册模块</strong></li>
+</ol>
+<p>在 <code class="notranslate">MainApplication.java</code> 中注册模块。</p>
+<div class="highlight highlight-source-java"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">com</span>.<span class="pl-s1">yourapp</span>.<span class="pl-s1">SpeechToTextModule</span>;
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-smi">MainApplication</span> <span class="pl-k">extends</span> <span class="pl-smi">Application</span> <span class="pl-k">implements</span> <span class="pl-smi">ReactApplication</span> {
+  <span class="pl-c1">@</span><span class="pl-c1">Override</span>
+  <span class="pl-k">public</span> <span class="pl-smi">List</span>&lt;<span class="pl-smi">ReactPackage</span>&gt; <span class="pl-en">getPackages</span>() {
+    <span class="pl-k">return</span> <span class="pl-smi">Arrays</span>.&lt;<span class="pl-smi">ReactPackage</span>&gt;<span class="pl-en">asList</span>(
+      <span class="pl-k">new</span> <span class="pl-smi">MainReactPackage</span>(),
+      <span class="pl-k">new</span> <span class="pl-smi">SpeechToTextPackage</span>() <span class="pl-c">// Add this line</span>
+    );
+  }
+}</pre></div>
+<ol start="3">
+<li><strong>在 JavaScript 中调用模块</strong></li>
+</ol>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-v">NativeModules</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'react-native'</span><span class="pl-kos">;</span>
+
+<span class="pl-k">const</span> <span class="pl-kos">{</span> SpeechToTextModule <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-v">NativeModules</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-en">startRecognition</span> <span class="pl-c1">=</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-s1">languageCode</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-k">try</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">transcription</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-v">SpeechToTextModule</span><span class="pl-kos">.</span><span class="pl-en">startRecognition</span><span class="pl-kos">(</span><span class="pl-s1">languageCode</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">return</span> <span class="pl-s1">transcription</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span> <span class="pl-k">catch</span> <span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">error</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">throw</span> <span class="pl-s1">error</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">const</span> <span class="pl-en">stopRecognition</span> <span class="pl-c1">=</span> <span class="pl-k">async</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-k">try</span> <span class="pl-kos">{</span>
+    <span class="pl-k">await</span> <span class="pl-v">SpeechToTextModule</span><span class="pl-kos">.</span><span class="pl-en">stopRecognition</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span> <span class="pl-k">catch</span> <span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">error</span><span class="pl-kos">(</span><span class="pl-s1">error</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+    <span class="pl-k">throw</span> <span class="pl-s1">error</span><span class="pl-kos">;</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span><span class="pl-kos">;</span></pre></div>
+<h3>总结</h3>
+<p>通过上述步骤，您可以创建一个自定义的语音识别库，支持您所需的特定语言或小语种。这个过程需要一定的开发经验和对语音识别引擎的了解。希望这些信息能帮助您实现所需的功能。如果有任何问题或进一步的需求，请随时提问。</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://zac5451.github.io"> SuperZAX </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Zac5451/zac5451.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+</html>
